@@ -1,0 +1,65 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+a {
+    text-decoration: none;
+    color: #007BFF; /* light blue color for links */
+    transition: color 0.3s ease;
+}
+
+header h1 {
+    background: linear-gradient(45deg, rgb(7, 7, 7), rgb(40, 33, 139));
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+a:hover {
+    color: pink; /* pink color on hover */
+    text-decoration: underline;
+}
+
+/* Animations for hover effects */
+@keyframes scaleUp {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+a:hover {
+    animation: scaleUp 0.3s forwards;
+}
+
+/* Header */
+header {
+    background-color: lightblue;
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: lightblue;
+    color: #333;
+    padding: 08px 0;
+    text-align: center;
+}
+
