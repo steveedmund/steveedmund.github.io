@@ -50,7 +50,7 @@ a:hover {
 /* Header */
 header {
     background-color: lightblue;
-    color: #333;
+    color: #000000;
     padding: 20px 0;
     text-align: center;
 }
@@ -58,7 +58,7 @@ header {
 /* Footer */
 footer {
     background-color: lightblue;
-    color: #333;
+    color: #000000;
     padding: 08px 0;
     text-align: center;
 }
