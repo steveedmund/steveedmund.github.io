@@ -22,14 +22,14 @@ a {
     transition: color 0.3s ease;
 }
 
-header h1 {
+/*header h1 {
     background: linear-gradient(45deg, rgb(7, 7, 7), rgb(40, 33, 139));
     -webkit-background-clip: text;
     color: transparent;
-}
+}*/
 
 a:hover {
-    color: pink; /* pink color on hover */
+    color: rgb(243, 112, 133); /* pink color on hover */
     text-decoration: underline;
 }
 
