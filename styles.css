@@ -102,7 +102,7 @@ footer {
   border-radius: 4px;
   width: 100%;
   height: 100%;
-  background-image: radial-gradient(#cd3f64, #9d3656);
+  background-image: radial-gradient(rgb(243, 112, 133), #9d3656); /* Adjusted the first gradient color */
   box-shadow: inset 0 0 0px 1px rgb(255 255 255 / .2), 0 1px 2px 1px rgb(255 255 255 / .2);
   transition-property: border-radius, padding, width, transform;
   transition-duration: .2s;
