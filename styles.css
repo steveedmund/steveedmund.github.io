@@ -30,7 +30,11 @@ main {
     padding: 20px;
     color: #E8e7e8;
     background-color: #5b575a;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 
+        15px 0 15px -10px rgba(0, 0, 0, 0.5), 
+        -15px 0 15px -10px rgba(0, 0, 0, 0.5),
+        0px -10px 15px -10px #5b575a, 
+        0px 10px 15px -10px #5b575a;
 }
 
 /* Underline Fade effect for links */
