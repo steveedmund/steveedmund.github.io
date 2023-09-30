@@ -112,6 +112,6 @@ a::before {
     padding: 10px; 
     max-height: 300px; 
     overflow-y: auto; 
-    background-color: #fff; 
+    background-color: #E5E5E5; 
     max-width: 1060px; /* Ensure it matches the video's width */
 }
