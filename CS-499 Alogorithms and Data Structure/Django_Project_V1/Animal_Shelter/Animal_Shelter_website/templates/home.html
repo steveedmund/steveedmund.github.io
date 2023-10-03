@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <!-- Check if the user is authenticated -->
+    {% if user.is_authenticated %}
+        <h1>Login Successful</h1>
+    {% else %}
+        <!-- Display an image when the user is not authenticated -->
+        <img src="{% static 'Animal_Shelter_website/pic_main.png' %}" class="rounded float-start" alt="Logo" width="600" height="600">
+        <br/>
+        <br/>
+        <br/>
+
+        <!-- Create a login form -->
+        <div class="col-md-6 offset-md-6">
+            <h1>Login</h1>
+            <br/>
+
+            <!-- Form for submitting login credentials -->
+            <form method="POST" action="{% url 'home' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <!-- Input field for username -->
+                    <input type="text" class="form-control" name="username" placeholder="Username" required>
+                </div><br/>
+                <div class="mb-3">
+                    <!-- Input field for password -->
+                    <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+                <br/>
+                <!-- Login button -->
+                <button type="submit" class="btn btn-secondary">Login</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
