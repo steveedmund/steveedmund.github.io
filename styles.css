@@ -33,9 +33,26 @@ main {
     padding: 20px;
 }
 
+/* Flexbox styling */
+.flex-container {
+    display: flex;
+    justify-content: center; /* This centers the content horizontally */
+    align-items: flex-start; /* This ensures items start at the top of the container */
+    padding: 20px 0; /* Add some vertical padding for spacing */
+}
+
+.left {
+    flex: 0 0 18%; /* This sets the left sidebar to take up 18% of the parent container width */
+    max-width: 18%; /* This sets a maximum width of 18% for the left sidebar */
+    margin-right: 20px; /* Add some right margin for spacing between the list and the main content */
+    margin-left: 20px;
+}
+
 .container {
+    flex: 1; /* This makes the main content take up the remaining space after left sidebar width is deducted */
     max-width: 800px;
     margin: 0 auto;
+    margin-left: 20px; /* Added margin-left to better center main content after list was added */
     padding: 20px;
     color: #333333; 
     background-color: #E5E5E5; /* Changed to light gray */
