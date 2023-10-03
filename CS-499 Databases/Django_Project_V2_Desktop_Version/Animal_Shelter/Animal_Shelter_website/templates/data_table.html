@@ -1,0 +1,310 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+    /* Add your custom text styles here */
+    .custom-text {
+        font-size: 16px; /* Change font size */
+        color: #928c8c; /* Change text color */
+        font-weight: bold; /* Add bold text */
+        text-transform: uppercase; /* Convert text to uppercase */
+        letter-spacing: 2px; /* Adjust letter spacing */
+    }
+</style>
+
+<div class="container text-center">
+    <p class="custom-text">Select up to 5 entries to display on the map</p>
+</div>
+
+<style>
+    .filters-container {
+      border-top: 2px solid #000; /* Add a solid black border above the filters */
+      border-bottom: 2px solid #000; /* Add a solid black border below the filters */
+      padding: 10px; /* Add some padding to the filters container for spacing */
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+  </style>
+
+<form method="post" action="{% url 'data_table' %}">
+    {% csrf_token %}
+    <div class="filters-container">
+        <label><input type="radio" name="filter_type" value="water_rescue" {% if request.POST.filter_type == "water_rescue" %}checked{% endif %}> Water Rescue</label>
+        <label><input type="radio" name="filter_type" value="mountain_rescue" {% if request.POST.filter_type == "mountain_rescue" %}checked{% endif %}> Mountain/Wilderness Rescue</label>
+        <label><input type="radio" name="filter_type" value="disaster_rescue" {% if request.POST.filter_type == "disaster_rescue" %}checked{% endif %}> Disaster Rescue/Individual Tracking</label>
+        <label><input type="radio" name="filter_type" value="reset" {% if request.POST.filter_type == "reset" %}checked{% endif %}> Reset - returns unfiltered state</label>
+        <button type="submit" class="btn btn-primary">Apply</button>
+    </div>
+</form>
+
+
+<div class="table-container" style="overflow: auto; max-height: 400px;">
+    <style>
+        .table th, .table td {
+            text-align: center; /* Center-align text in both headers and data cells */
+        }
+    </style>
+
+    <table class="table table-hover table-hover table-bordered">
+        <thead class="table-light">
+            <tr>
+                <th></th>
+                <th scope="col">age_upon_outcome</th>
+                <th scope="col">animal_id</th>
+                <th scope="col">animal_type</th>
+                <th scope="col">breed</th>
+                <th scope="col">color</th>
+                <th scope="col">date_of_birth</th>
+                <th scope="col">datetime</th>
+                <th scope="col">monthyear</th>
+                <th scope="col">name</th>
+                <th scope="col">outcome_subtype</th>
+                <th scope="col">outcome_type</th>
+                <th scope="col">sex_upon_outcome</th>
+                <th scope="col">location_lat</th>
+                <th scope="col">location_long</th>
+                <th scope="col">age_upon_outcome_in_weeks</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shelter_model in filtered_data %}
+            <tr>
+                <td><input type="checkbox" name="select_entry" data-lat="{{ shelter_model.location_lat }}" data-lng="{{ shelter_model.location_long }}" data-name="{{ shelter_model.name }}" data-sex="{{ shelter_model.sex_upon_outcome }}" data-breed="{{ shelter_model.breed }}" data-age="{{ shelter_model.age_upon_outcome }}"></td>
+                <td style="white-space: nowrap;">{{ shelter_model.age_upon_outcome }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.animal_id }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.animal_type }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.breed }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.color }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.date_of_birth }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.datetime }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.monthyear }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.name }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.outcome_subtype }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.outcome_type }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.sex_upon_outcome }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.location_lat }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.location_long }}</td>
+                <td style="white-space: nowrap;">{{ shelter_model.age_upon_outcome_in_weeks }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<style>
+    /* Center the chart container and reduce its size */
+    .chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60vh; /* Adjust the height as needed */
+        margin-top: 25px;
+        margin-right: -50px;
+        margin-bottom: 40px;
+    }
+</style>
+
+<style>
+    /* Add a custom class to style the legend */
+    .custom-legend {
+        position: absolute;
+        right: 160px; /* Adjust the right margin as needed */
+        top: 25;
+        list-style: none;
+        padding: 0;
+        font-size: 14px; /* Adjust the font size as needed */
+    }
+
+    /* Style for individual legend items */
+    .custom-legend li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px; /* Adjust the vertical spacing as needed */
+    }
+
+    /* Style for legend color boxes */
+    .custom-legend li span {
+        display: inline-block;
+        width: 20px; /* Adjust the width of the color box as needed */
+        height: 10px; /* Adjust the height of the color box as needed */
+        margin-right: 5px; /* Adjust the spacing between color box and label as needed */
+    }
+</style>
+
+<!-- Add a container for the pie chart -->
+{% if not request.POST.filter_reset %}
+
+        <div class="chart-container">
+            <canvas id="breedPieChart"></canvas>
+
+            <ul class="custom-legend">
+                <!-- Generate legend items dynamically using JavaScript -->
+            </ul>
+        </div>
+
+        
+<!-- Include the Chart.js library -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Add a script block to generate the pie chart -->
+<script>
+    
+    function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+    // Get breed percentages from Django context
+    const breedPercentages = JSON.parse('{{ breed_percentages_json|safe }}');
+    const isResetFilter = '{{ request.POST.filter_type }}' === 'reset';
+
+
+    // Convert breed percentages object to arrays for Chart.js
+    const breedLabels = Object.keys(breedPercentages);
+    const breedData = Object.values(breedPercentages);
+
+    if (isResetFilter) {
+        breedLabels.length = 1; // Keep only one label
+        breedData.length = 1; // Keep only one data point
+        breedLabels[0] = 'No Data'; // Label for the single data point
+        breedData[0] = 100; // 100% for the single data point
+    }
+
+    const breedColors = [];
+    for (let i = 0; i < breedLabels.length; i++) {
+    breedColors.push(getRandomColor());
+    }
+    
+    
+    const ctx = document.getElementById("breedPieChart").getContext("2d");
+    const myPieChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+            
+            datasets: [
+                {
+                    data: breedData,
+                    backgroundColor: breedColors,
+                },
+            ],
+        },
+       
+    });
+
+    const legendContainer = document.querySelector(".custom-legend");
+    breedLabels.forEach((label, index) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `
+            <span style="background-color: ${breedColors[index]};"></span>
+            ${label}
+        `;
+        legendContainer.appendChild(listItem);
+    });
+</script>
+
+
+
+{% endif %}
+
+<style>
+.map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* You can adjust the height as needed */
+}
+
+/* Style the map container with a border and padding */
+#map {
+    border: 2px solid #000000;
+    padding: 10px;
+    background-color: #7fc50e; /* Set a background color for the map area */
+}
+</style>
+
+<div class="map-container">
+    <div id="map" style="height: 600px; width: 1200px;"></div>
+</div>
+
+
+<script>
+
+var map = L.map('map').setView([30.50665787, -97.34087807], 8);
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+    </script>
+
+<!-- Add an event listener to the checkboxes to handle marker creation -->
+<!-- Add an event listener to the checkboxes to handle marker creation and limit selection -->
+<!-- Add an event listener to the checkboxes to handle marker creation and limit selection -->
+<!-- Add an event listener to the checkboxes to handle marker creation and limit selection -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const checkboxes = document.querySelectorAll('input[name="select_entry"]');
+        const maxSelection = 5; // Maximum number of checkboxes allowed to be selected
+    
+        checkboxes.forEach(function (checkbox) {
+            checkbox.addEventListener("change", function () {
+                const selectedCheckboxes = document.querySelectorAll('input[name="select_entry"]:checked');
+    
+                if (selectedCheckboxes.length > maxSelection) {
+                    // If more than the allowed checkboxes are selected, uncheck the current checkbox
+                    this.checked = false;
+                    return;
+                }
+    
+                if (this.checked) {
+                    const lat = parseFloat(this.getAttribute("data-lat"));
+                    const lng = parseFloat(this.getAttribute("data-lng"));
+                    const name = this.getAttribute("data-name");
+                    const sex = this.getAttribute("data-sex");
+                    const breed = this.getAttribute("data-breed");
+                    const age = this.getAttribute("data-age");
+    
+                    // Create a marker and add it to the map
+                    const marker = L.marker([lat, lng]).addTo(map);
+    
+                    // Create a pop-up with the desired information
+                    const popupContent = `
+                        <strong>Name:</strong> ${name}<br>
+                        <strong>Sex:</strong> ${sex}<br>
+                        <strong>Breed:</strong> ${breed}<br>
+                        <strong>Age:</strong> ${age}
+                    `;
+    
+                    marker.bindPopup(popupContent).openPopup();
+                } else {
+                    // If the checkbox is unchecked, you can remove the corresponding marker from the map
+                    // Implement this logic if needed
+                }
+            });
+        });
+    });
+    </script>
+    
+    
+    
+
+
+
+
+
+
+
+{% endif %}
+{% endblock %}
