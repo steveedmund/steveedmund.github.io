@@ -6,7 +6,9 @@ body {
     min-height: 100vh; /* Full viewport height */
     margin: 0;
     font-family: Lato, sans-serif;
-    background: #E5E5E5; /* Changed from #5b575a to a light gray */
+    background: #E5E5E5;
+    width: 100%;
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
 p {
