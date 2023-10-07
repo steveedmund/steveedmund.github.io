@@ -9,15 +9,15 @@ html, body {
     background: #E5E5E5;
     width: 100%;
     overflow-x: hidden; /* Hide horizontal overflow */
-    
-}
-
-.content {
-    flex: 1 0 auto; /* this will make the content expand and take up any available space */
 }
 
 p {
     text-indent: 2em; /* Adjust as necessary */
+}
+
+
+.content {
+    flex: 1 0 auto; /* this will make the content expand and take up any available space */
 }
 
 header {
@@ -40,17 +40,51 @@ main {
     padding: 20px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+/* Flexbox styling */
+/* The main flex container */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* or whatever max width you prefer */
+    margin: 0 auto; /* this centers the flex-container on the page */
     padding: 20px;
-    color: #333333; 
-    background-color: #E5E5E5; /* Changed to light gray */
+}
+
+/* The left sidebar with the skills */
+.left {
+    flex: 1;  /* takes up 20% of the space */
+    max-width: 20%;
+    transform: translateX(-120px); /* move the element 30px to the left */
+    padding: 10px; /* spacing inside the left box */
+}
+
+/* The main content area */
+.container {
+    flex: 5; /* takes up 60% of the space */
+    max-width: 85%;
+    padding: 10px; /* spacing inside the main content box */
+    background-color: #E5E5E5;
     box-shadow: 
         15px 0 15px -10px rgba(0, 0, 0, 0.5), 
         -15px 0 15px -10px rgba(0, 0, 0, 0.5),
         0px -10px 15px -10px #E5E5E5, 
         0px 10px 15px -10px #E5E5E5;
+}
+
+/* The right sidebar with the picture */
+.right {
+    flex: 1; /* takes up 20% of the space */
+    top: 0;
+    max-width: 20%;
+    transform: translateX(120px); /* move the element 30px to the right */
+    padding: 10px; /* spacing inside the right box */
+}
+
+img {
+    max-width: 100%; /* this ensures that the image will resize if it's too big for its container */
+    height: auto;
 }
 
 /* Underline Fade effect for links */
@@ -158,4 +192,3 @@ a::before {
         order: 1;
     }
 }
-
