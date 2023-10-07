@@ -6,7 +6,10 @@ body {
     min-height: 100vh; /* Full viewport height */
     margin: 0;
     font-family: Lato, sans-serif;
-    background: #E5E5E5; /* Changed from #5b575a to a light gray */
+    background: #E5E5E5;
+    width: 100%;
+    overflow-x: hidden; /* Hide horizontal overflow */
+    
 }
 
 .content {
@@ -119,3 +122,40 @@ a::before {
     background-color: #E5E5E5; 
     max-width: 1060px; /* Ensure it matches the video's width */
 }
+
+/* For devices with screen width less than 768px */
+@media (max-width: 767px) {
+
+    .flex-container {
+        flex-direction: column; /* stack children vertically */
+        align-items: center; /* center items */
+    }
+
+    /* Adjust the width and transforms of the sidebars and content for mobile */
+    .left, .right, .container {
+        max-width: 100%; 
+        transform: none; /* reset the transform */
+        margin-bottom: 20px; /* add some space between them */
+    }
+
+    .video-container {
+        height: auto; /* adjust video height for mobile */
+    }
+
+    .custom-video {
+        height: auto; /* adjust video height for mobile */
+    }
+
+    .left {
+        order: 2;
+    }
+
+    .container {
+        order: 3;
+    }
+
+    .right {
+        order: 1;
+    }
+}
+
