@@ -13,6 +13,10 @@ body {
     flex: 1 0 auto; /* this will make the content expand and take up any available space */
 }
 
+p {
+    text-indent: 2em; /* Adjust as necessary */
+}
+
 header {
     background: linear-gradient(#007BFF, #E5E5E5); /* Blue to light gray gradient */
     color: #333333; 
