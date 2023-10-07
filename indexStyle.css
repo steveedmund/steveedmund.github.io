@@ -1,41 +1,134 @@
 @import url(https://fonts.googleapis.com/css?family=Lato:300,400);
 
-body {
+html, body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
     margin: 0;
-    padding: 0;
     font-family: Lato, sans-serif;
-    background: #E5E5E5; 
-    overflow-x: hidden; /* prevent horizontal scrolling */
+    background: #E5E5E5;
+    width: 100%;
+    overflow-x: hidden; /* Hide horizontal overflow */
 }
 
-header, footer {
-    background: linear-gradient(#007BFF, #E5E5E5);
+p {
+    text-indent: 2em; /* Adjust as necessary */
+}
+
+
+.content {
+    flex: 1 0 auto; /* this will make the content expand and take up any available space */
+}
+
+header {
+    background: linear-gradient(#007BFF, #E5E5E5); /* Blue to light gray gradient */
     color: #333333; 
     padding: 20px;
     text-align: center;
+}
+
+footer {
+    flex-shrink: 0;
+    background: linear-gradient(#E5E5E5, #007BFF); /* Light gray to blue gradient */
+    color: #333333; 
+    padding: 20px;
+    text-align: center;
+    min-height: 80px;
 }
 
 main {
     padding: 20px;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
+/* Flexbox styling */
+/* The main flex container */
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px; /* or whatever max width you prefer */
+    margin: 0 auto; /* this centers the flex-container on the page */
     padding: 20px;
-    color: #333333; 
-    background-color: #FFF; /* Changed to white for contrast */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* The left sidebar with the skills */
+.left {
+    flex: 1;  /* takes up 20% of the space */
+    max-width: 20%;
+    transform: translateX(-120px); /* move the element 30px to the left */
+    padding: 10px; /* spacing inside the left box */
+}
+
+/* The main content area */
+.container {
+    flex: 5; /* takes up 60% of the space */
+    max-width: 85%;
+    padding: 10px; /* spacing inside the main content box */
+    background-color: #E5E5E5;
+    box-shadow: 
+        15px 0 15px -10px rgba(0, 0, 0, 0.5), 
+        -15px 0 15px -10px rgba(0, 0, 0, 0.5),
+        0px -10px 15px -10px #E5E5E5, 
+        0px 10px 15px -10px #E5E5E5;
+}
+
+/* The right sidebar with the picture */
+.right {
+    flex: 1; /* takes up 20% of the space */
+    top: 0;
+    max-width: 20%;
+    transform: translateX(120px); /* move the element 30px to the right */
+    padding: 10px; /* spacing inside the right box */
+}
+
+img {
+    max-width: 100%; /* this ensures that the image will resize if it's too big for its container */
+    height: auto;
+}
+
+/* Underline Fade effect for links */
 a {
     text-decoration: none;
+    position: relative;
+    display: inline-block;
     color: #333333; 
+    overflow: hidden;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #007BFF; 
+    color: #007BFF; /* Added a subtle blue color on hover for visual feedback */
+}
+
+a::before {
+    content: "";
+    position: absolute;
+    width: 100%; 
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: #333333; 
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.link-wrapper::after {
+    content: " | ";
+    display: inline-block;
+    margin-left: 5px; 
+    margin-right: 5px; 
+    color: #333333; /* Changed to almost black for better contrast */
+}
+
+.link-wrapper:last-child::after {
+    content: "";
+}
+
+.link-wrapper:hover a::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 .video-container {
@@ -43,33 +136,59 @@ a:hover {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 600px;
+    height: 600px; /* This determines the height of the video. Adjust as needed */
+    max-width: 1067px; /* This ensures the width never exceeds 16:9 aspect ratio given the height of 600px. (600 * 16/9) */
+    margin: 0 auto;
     overflow: hidden;
 }
 
 .custom-video {
-    max-width: 100%; 
+    width: 100%; /* Width will adjust to fit the container */
+    height: 100%; /* It takes the full height of its parent, .video-container */
 }
 
 .transcript-container {
-    margin: 20px auto;
+    margin: 20px auto; /* Added margin to top and bottom */
     border: 1px solid #ccc; 
     padding: 10px; 
     max-height: 300px; 
     overflow-y: auto; 
     background-color: #E5E5E5; 
+    max-width: 1060px; /* Ensure it matches the video's width */
 }
 
-@media (min-width: 768px) {
-    /* Tablet and up */
-    .container {
-        display: flex;
-        gap: 20px;
+/* For devices with screen width less than 768px */
+@media (max-width: 767px) {
+
+    .flex-container {
+        flex-direction: column; /* stack children vertically */
+        align-items: center; /* center items */
     }
-    .left, .right {
-        flex-basis: 20%; 
+
+    /* Adjust the width and transforms of the sidebars and content for mobile */
+    .left, .right, .container {
+        max-width: 100%; 
+        transform: none; /* reset the transform */
+        margin-bottom: 20px; /* add some space between them */
     }
+
+    .video-container {
+        height: auto; /* adjust video height for mobile */
+    }
+
+    .custom-video {
+        height: auto; /* adjust video height for mobile */
+    }
+
+    .left {
+        order: 2;
+    }
+
     .container {
-        flex-basis: 60%; 
+        order: 3;
+    }
+
+    .right {
+        order: 1;
     }
 }
