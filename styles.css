@@ -130,4 +130,7 @@ a::before {
     .right {
         order: 1;
     }
+    footer {
+        order 4;
+    }
 }
