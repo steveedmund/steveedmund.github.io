@@ -180,6 +180,16 @@ a::before {
         height: auto; /* adjust video height for mobile */
     }
 
-    /* Other adjustments you might want to make for mobile views can be added here */
+    .left {
+        order: 2;
+    }
+
+    .container {
+        order: 3;
+    }
+
+    .right {
+        order: 1;
+    }
 }
 
