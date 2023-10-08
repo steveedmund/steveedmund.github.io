@@ -1,0 +1,30 @@
+/* Custom CSS with increased specificity */
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400);
+
+body {
+    background-color: #ECF0F1;
+    color: #2C3E50;
+    font-family: Lato, sans-serif;
+}
+
+p {
+    text-indent: 2em;
+}
+
+.navbar.navbar-light.bg-light {
+    background-color: #2C3E50 !important;
+}
+
+.navbar.navbar-light.bg-light .navbar-brand,
+.navbar.navbar-light.bg-light .nav-link {
+    color: #ECF0F1 !important; 
+}
+
+.navbar.navbar-light.bg-light .nav-link:hover {
+    color: #E74C3C !important;
+}
+
+footer {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+}
