@@ -6,73 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Pittie.png" type="image/png">
     <title>Steve Edmund - CS-499 Capstone</title>
-    <link rel="stylesheet" href="indexStyle.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="newStyles.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>Steve Edmund - CS-499 Capstone Project</h1>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Steve Edmund - CS-499 Capstone Project</a> |
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/CodeReview.html" target="_blank" rel="noopener noreferrer">Code Review</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">Software Design & Engineering</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">Algorithms & Data Structure</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/Databases.html" target="_blank" rel="noopener noreferrer">Databases</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/steveedmund/steveedmund.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">Noble Paws Web App @ Replit</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-        <hr width="80%" 
-        	size="01" 
-        	align="center" 
-        	color="#3B3B3B" noshade>
 
-        <br>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io">
-                Home
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/CodeReview.html" target="_blank" rel="noopener noreferrer">
-                Code Review
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">
-                Software Design & Engineering
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">
-                Algorithms & Data Structure
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/Databases.html" target="_blank" rel="noopener noreferrer">
-                Databases
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://github.com/steveedmund/steveedmund.github.io" target="_blank" rel="noopener noreferrer">
-                GitHub Repository
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">
-                Noble Paws Web App @ Replit
-            </a>
-        </span>
-
-    </header>
-
-    <div class="flex-container">
-
-        <div class="left">
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-12 col-md-3 order-2 order-md-1">
+            <!-- Your sidebar content here -->
 
         <h2>Skills:</h2>
 
-    <ul>
+        <ul>
         <li><strong>Programming Languages</strong>
             <ul>
                 <li>Python, Java, C++</li>
@@ -129,15 +115,17 @@
                 <li>Discrete Mathematics</li>
             </ul>
         </li>
-    </ul>
+        </ul>
 
         </div>
-    
+        
 
-    <!-- Main content wrapped inside the container for styling -->
-    <div class="container">
 
-        <center><h1>Professional Self-Assessment&nbsp;</h1></center>
+        <!-- Main content area -->
+        <div class="col-12 col-md-6 order-3 order-md-2">
+            <!-- Your main content here -->
+
+            <center><h1>Professional Self-Assessment&nbsp;</h1></center>
 
         <br>
 
@@ -230,21 +218,27 @@
         <p>
             Acknowledging this potential threat, I undertook a transformative step—retiring the hard-coded system and ushering in a dynamic registration/login mechanism. This new approach, rooted in modern security practices, authenticates users based on their unique credentials. It minimizes the risk of unauthorized access and grants users the autonomy and flexibility to manage their access details. They can effortlessly update, reset, or revoke their credentials, aligning with best practices in user data management and security. Through this evolution, I've mitigated a critical vulnerability and exemplified a proactive security mindset, ensuring the application stands resilient against potential adversarial exploits.
         </p>
-		
-	</div>
-        <div class="right">
+        </div>
+
+        <!-- Right content area (image) -->
+        <div class="col-12 col-md-3 text-center order-1 order-md-3">
             <img src="Assets/Me.png" width="128" alt="A picture of author.">
         </div>
     </div>
+</div>
 
-    <!-- Footer -->
-    <div class="content">
-        <!-- Header, main content, etc... -->
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center"> <!-- Added text-center class here -->
+        <span class="text-muted">&copy; 2023 Steve Edmund. All rights reserved.</span>
     </div>
-    <footer>
-        <p>&copy; 2023 Steve Edmund. All rights reserved.</p>
-    </footer>
+</footer>
+
+
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>
