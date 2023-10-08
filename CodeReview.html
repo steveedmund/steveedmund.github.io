@@ -5,68 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/Assets/Pittie.png" type="image/png">
-    <title>Steve Edmund - CS-499 Capstone</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>CS-499 Capstone - Code Review</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="codeReviewStyle.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>CS-499 Capstone Project | Code Review</h1>
-
-        <hr width="80%"
-            size="01"
-            align="center"
-            color="#3B3B3B" noshade>
-
-        <br>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io">
-                Home
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">
-                Software Design & Engineering
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">
-                Algorithms & Data Structure
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/Databases.html" target="_blank" rel="noopener noreferrer">
-                Databases
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://github.com/steveedmund/steveedmund.github.io" target="_blank" rel="noopener noreferrer">
-                GitHub Repository
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">
-                Noble Paws Web App @ Replit
-            </a>
-        </span>
-
-    </header>
-
-    <!-- Video and Transcript Section -->
-    <div class="video-container">
-        <iframe class="custom-video" src="https://www.youtube.com/embed/zlzqQ--PY_A" frameborder="0" allowfullscreen></iframe>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">CS-499 Capstone - Code Review</a> |
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">Software Design & Engineering</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">Algorithms & Data Structure</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/Databases.html" target="_blank" rel="noopener noreferrer">Databases</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/steveedmund/steveedmund.github.io" target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">Noble Paws Web App @ Replit</a>
+            </li>
+        </ul>
     </div>
+</nav>
+
+    <!-- Content Wrapper -->
+    <div class="content-wrapper">
+    <div class="container-fluid">
+    <div class="row">
+
+        <!-- Video Section -->
+        <div class="col-md-6">
+            <div class="video-container">
+                <iframe class="custom-video" src="https://www.youtube.com/embed/zlzqQ--PY_A" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
 
 
-    <div class="transcript-container">
+        <div class="col-md-6">
+            <div class="transcript-container">
 
         <h1>Video Transcript</h1>
         <h2>Review of the existing functionality (Software design & engineering):</h2>
@@ -344,6 +337,7 @@
 
         <p>
             The heart of the application's computational logic is nestled within iterative processing methods. This methodological choice is particularly evident in tasks such as the rendering of map markers. On an initial assessment, this approach offers several advantages:
+        </p>
 
             <ul>
                 <li><strong>Simplicity:</strong> Iterative methods, especially in a language as straightforward as Python, often translate to code that's more legible. This legibility ensures that even developers new to the project can quickly grasp the underlying logic and contribute efficiently.</li>
@@ -598,15 +592,26 @@
 
             <li><strong>CS-499-05:</strong> Develop a security mindset that anticipates adversarial exploits in software architecture and designs to expose potential vulnerabilities, mitigate design flaws, and ensure privacy and enhanced security of data and resources.</li>
         </ul>
-    </div>
 
-    <!-- Footer -->
-    <div class="content">
-        <!-- Header, main content, etc... -->
     </div>
-    <footer>
-        <p>&copy; 2023 Steve Edmund. All rights reserved.</p>
-    </footer>
+    </div>
+</div>
+</div>
+</div>
+
+
+<!-- Footer >>
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">&copy; 2023 Steve Edmund. All rights reserved.</span>
+    </div>
+</footer>
+-->
+
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
