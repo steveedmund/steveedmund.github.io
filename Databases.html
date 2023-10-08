@@ -6,62 +6,124 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="/Assets/Pittie.png" type="image/png">
     <title>Steve Edmund - CS-499 Capstone</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="newStyles.css">
+
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header>
-        <h1>CS-499 Capstone Project | Databases</h1>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">CS-499 Capstone</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/CodeReview.html" target="_blank" rel="noopener noreferrer">Code Review</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">Software Design & Engineering</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">Algorithms & Data Structure</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/steveedmund/steveedmund.github.io/tree/main/CS-499%20Databases" target="_blank" rel="noopener noreferrer">Databases Repo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">Noble Paws Web App @ Replit</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-        <hr width="80%" 
-        size="01" 
-        align="center" 
-        color="#3B3B3B" noshade>
+
+<!-- Main Content -->
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-12 col-md-3 order-2 order-md-1">
+            <!-- Your sidebar content here -->
+
+        <h2>Skills:</h2>
+
+        <ul>
+        <li><strong>Programming Languages</strong>
+            <ul>
+                <li>Python, Java, C++</li>
+            </ul>
+        </li>
+
+        <li><strong>Web Development</strong>
+            <ul>
+                <li>HTML, CSS, Django</li>
+            </ul>
+        </li>
+
+        <li><strong>Databases</strong>
+            <ul>
+                <li>SQL, NoSQL, Relational Databases</li>
+                <li>Database Design</li>
+            </ul>
+        </li>
+
+        <li><strong>Core Computer Science</strong>
+            <ul>
+                <li>Algorithms, Data Structures</li>
+                <li>Search Algorithms</li>
+                <li>Discrete Mathematics</li>
+            </ul>
+        </li>
+
+        <li><strong>Software Development</strong>
+            <ul>
+                <li>Unit Testing, Debugging</li>
+            </ul>
+        </li>
+
+        <li><strong>Systems & Architecture</strong>
+            <ul>
+                <li>Operating Systems (Windows & Linux)</li>
+                <li>Computer Architecture</li>
+                <li>Compilers and Interpreters</li>
+                <li>Networks</li>
+            </ul>
+        </li>
+
+        <li><strong>Graphics & Visualization</strong>
+            <ul>
+                <li>Computer Graphics (OpenGL)</li>
+            </ul>
+        </li>
+
+        <li><strong>Mathematics for CS</strong>
+            <ul>
+                <li>Probability and Statistics</li>
+                <li>Linear Algebra</li>
+                <li>Cryptography</li>
+                <li>Discrete Mathematics</li>
+            </ul>
+        </li>
+        </ul>
+
+        </div>
+        
+        <!-- Main content area -->
+        <div class="col-12 col-md-6 order-3 order-md-2">
+        
+        <!-- Your main content here -->
+
+        <center><h1>Databases</h1></center>
 
         <br>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io">
-                Home
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/CodeReview.html" target="_blank" rel="noopener noreferrer">
-                Code Review
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/SoftwareDesign_Engineering.html" target="_blank" rel="noopener noreferrer">
-                Software Design & Engineering
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://steveedmund.github.io/ADS.html" target="_blank" rel="noopener noreferrer">
-                Algorithms & Data Structure
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://https://github.com/steveedmund/steveedmund.github.io/tree/main/CS-499%20Databases" target="_blank" rel="noopener noreferrer">
-                Databases Repo
-            </a>
-        </span>
-
-        <span class="link-wrapper">
-            <a class="nav-link" href="https://animal-shelterwebapp-steveedmund.replit.app/" target="_blank" rel="noopener noreferrer">
-                Noble Paws Web App @ Replit
-            </a>
-        </span>
-
-    </header>
-
-    <!-- Main content wrapped inside the container for styling -->
-    <div class="container">
 
         <h2>Artifact Description:</h2>
 
@@ -124,15 +186,26 @@
 
     </div>
 
-    <!-- Footer -->
-    <div class="content">
-        <!-- Header, main content, etc... -->
+
+        <!-- Right content area (image) -->
+        <div class="col-12 col-md-3 text-center order-1 order-md-3">
+            <img src="Assets/Me.png" width="128" alt="A picture of author.">
+        </div>
     </div>
-    <footer>
-        <p>&copy; 2023 Steve Edmund. All rights reserved.</p>
-    </footer>
+</div>
+
+<!-- Footer -->
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">&copy; 2023 Steve Edmund. All rights reserved.</span>
+    </div>
+</footer>
+
+
+<!-- Bootstrap scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-
 </html>
-
