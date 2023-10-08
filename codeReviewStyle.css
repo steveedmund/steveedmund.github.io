@@ -1,0 +1,78 @@
+body {
+    background-color: #ECF0F1;
+    color: #2C3E50;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Lato, sans-serif;
+}
+
+p {
+    text-indent: 2em;
+}
+
+.navbar.navbar-light.bg-light {
+    background-color: #2C3E50 !important;
+}
+
+.navbar.navbar-light.bg-light .navbar-brand,
+.navbar.navbar-light.bg-light .nav-link {
+    color: #ECF0F1 !important; 
+}
+
+.navbar.navbar-light.bg-light .nav-link:hover {
+    color: #E74C3C !important;
+}
+
+.content-wrapper {
+    display: flex;
+    height: calc(100vh - 130px); /* Assuming navbar height is 60px and footer height is 60px. Adjust accordingly. */
+    align-items: stretch;
+}
+
+.video-container {
+    flex: 1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    position: relative;
+    padding-bottom: 56.25%;  /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+
+.custom-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+.transcript-container {
+    flex: 1;
+    padding: 20px;
+    border-left: 1px solid #e0e0e0; /* Optional, adds a visual separation from the video */
+    height: 630px; /* Adjusts the height to fit the content */
+    overflow-y: auto; /* Adds a scrollbar if the content exceeds the container height */
+}
+
+/* Styles for screens smaller than 768px (or whatever breakpoint you choose) */
+@media (max-width: 767px) {
+    .content-wrapper {
+        height: auto;  /* Let it adjust based on content */
+        flex-direction: column;  /* Stack the children vertically */
+    }
+    .transcript-container {
+        height: auto;  /* Let it adjust based on content */
+        max-height: 300px;  /* Set a maximum height with scrolling */
+        overflow-y: auto;
+    }
+}
+
+footer {
+    background-color: #2C3E50;
+    color: #ECF0F1;
+}
